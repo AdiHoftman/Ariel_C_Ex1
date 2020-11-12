@@ -3,7 +3,10 @@ AR=ar
 OBJECTS_MAIN=main.o;
 FLAGS=-Wall -g
 
-all: mains maind 
+all: main
+
+main: main.o basicMath.o power.o
+	$(CC) $(FLAGS) basicMath.o power.o main.o -o main
 	
 mymaths: libmyMath.a 
 
@@ -34,6 +37,6 @@ basicMath.o: basicMath.c myMath.h
 .PHONY: clean all
 
 clean:
-	rm -f maind mains *.so *.a *.o	
+	rm -f maind mains main *.so *.a *.o
 
 		 
